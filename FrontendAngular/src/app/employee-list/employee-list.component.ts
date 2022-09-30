@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../models/employee.model';
 import { ApiService } from '../services/api.service';
+import { DivisionsService } from '../services/divisions.service';
 import { EmployeeService } from '../services/employees.service';
 
 @Component({
@@ -20,7 +21,8 @@ export class EmployeeListComponent implements OnInit {
   };
 
   constructor(private api : ApiService,
-              public employeeService: EmployeeService) { }
+              public employeeService: EmployeeService,
+              public divisionService: DivisionsService) { }
 
   ngOnInit(): void {
     this.getAllEmployees()

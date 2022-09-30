@@ -1,10 +1,4 @@
-export interface Employee {
+export interface Division {
   id : number;
-  divisionId : number;
-  surname : string;
   name : string;
-  patronymic : string;
-  dateOfBirth?: Date;
-  dateOfEmployment?: Date;
-  wage : number;
 }

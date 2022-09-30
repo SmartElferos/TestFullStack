@@ -12,7 +12,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let employeeItem of employeeService.getEmployees()">
-        <td>{{ employeeItem.divisionId }}</td>
+        <td>{{ divisionService.getDivision(employeeItem.divisionId) }}</td>
         <td>
           {{ employeeItem.surname }} {{ employeeItem.name }} {{ employeeItem.patronymic }}
         </td>
