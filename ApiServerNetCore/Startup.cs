@@ -15,6 +15,7 @@ namespace TestFullstack
 {
     public class Startup
     {
+        readonly string allowSpecificOrigins = "_allowSpecificOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -25,6 +26,8 @@ namespace TestFullstack
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(); // добавляем сервисы CORS
+
             services.AddDbContext<EmployeeDBContext>(opt => opt.UseSqlServer
                 (Configuration.GetConnectionString("EmployeeConnection")));
 
@@ -34,11 +37,36 @@ namespace TestFullstack
 
             //services.AddScoped<IEmployeeRepo, MockEmployeeRepo>();
             services.AddScoped<IEmployeeRepo, SqlEmployeeRepo>();
+
+            services.AddCors(options =>
+
+            {
+
+                options.AddPolicy(allowSpecificOrigins,
+
+                builder =>
+
+                {
+
+                    builder.WithOrigins("http://localhost:4200", 
+                                        "http://localhost:5000",
+                                        "http://localhost:5000/api/employee",
+                                        "https://localhost:5001")
+
+                            .AllowAnyHeader()
+
+                            .AllowAnyMethod();
+
+                });
+
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            string allowSpecificOrigins = "_allowSpecificOrigins";
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -50,9 +78,13 @@ namespace TestFullstack
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
-
             app.UseRouting();
+            
+            //app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
+            app.UseCors(allowSpecificOrigins);
+            
+            app.UseHttpsRedirection();
 
             app.UseAuthorization();
 

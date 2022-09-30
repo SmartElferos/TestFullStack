@@ -13,6 +13,7 @@ namespace TestFullstack.Controllers
     //api/employees
     [Route("api/employee")]
     [ApiController]
+    //[EnableCors(origins: "https://localhost:4200", headers: "*", methods: "*")]
     public class EmployeesController : ControllerBase
     {
         private readonly IEmployeeRepo _repository;
