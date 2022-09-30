@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class DivisionsService {
 
   getDivision(id: number): string{
-    return
+    return '';
   }
   constructor() { }
 }
