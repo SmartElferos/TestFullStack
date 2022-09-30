@@ -10,6 +10,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { EmployeeComponent } from './employee/employee.component';
+import { EmployeeModalCreateComponent } from './employee-modal-create/employee-modal-create.component';
+import { EmployeeModalUpdateComponent } from './employee-modal-update/employee-modal-update.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +20,9 @@ import { DatePipe } from '@angular/common';
     EmployeeListComponent,
     AboutComponent,
     NavbarComponent,
+    EmployeeComponent,
+    EmployeeModalCreateComponent,
+    EmployeeModalUpdateComponent,
   ],
   imports: [
     BrowserModule,

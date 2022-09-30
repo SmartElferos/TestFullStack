@@ -1,5 +1,5 @@
 <div class="container my-5">
-  <table class="table mt-3" *ngIf="employees">
+  <table class="table mt-3" *ngIf="employeeService.isEmpty()">
     <thead>
       <tr>
         <th scope="col">Отдел</th>
@@ -11,14 +11,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let employee of employees">
-        <td>{{ employee.divisionId }}</td>
+      <tr *ngFor="let employeeItem of employeeService.getEmployees()">
+        <td>{{ employeeItem.divisionId }}</td>
         <td>
-          {{ employee.surname }} {{ employee.name }} {{ employee.patronymic }}
+          {{ employeeItem.surname }} {{ employeeItem.name }} {{ employeeItem.patronymic }}
         </td>
-        <td>{{ employee.dateOfBirth | date:'dd.MM.yyyy'}}</td>
-        <td>{{ employee.dateOfEmployment | date:'dd.MM.yyyy'}}</td>
-        <td>{{ employee.wage }}</td>
+        <td>{{ employeeItem.dateOfBirth | date:'dd.MM.yyyy'}}</td>
+        <td>{{ employeeItem.dateOfEmployment | date:'dd.MM.yyyy'}}</td>
+        <td>{{ employeeItem.wage }}</td>
         <td>
           <button
             type="button"
@@ -32,123 +32,17 @@
             type="button"
             class="btn btn-primary p-1 m-1"
             data-bs-toggle="modal"
-            data-bs-target="#createModal"
-            (click)="loadEmployee(employee.id)"
+            data-bs-target="#updateModal"
+            (click)="selectEmployee(employeeItem)"
           >
             Редактировать
           </button>
-          <button class="btn btn-danger p-1" (click)="deleteEmployee(employee)">Удалить</button>
+          <button class="btn btn-danger p-1" (click)="deleteEmployee(employeeItem)">Удалить</button>
         </td>
       </tr>
     </tbody>
   </table>
-  <p *ngIf="!employees">Записей сотрудников не найдено</p>
+  <p *ngIf="!employeeService.isEmpty()">Записей сотрудников не найдено</p>
 </div>
-
-<!-- Modal -->
-<div
-  class="modal fade"
-  id="createModal"
-  tabindex="-1"
-  aria-labelledby="createModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="createModalLabel">Данные сотрудника</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <form [formGroup]="employeeForm" (ngSubmit)="saveEmployee()">
-          <label for="modalInputDivision" class="form-label">Отдел</label>
-          <select
-            class="form-select"
-            formControlName="divisionId"
-            aria-label="Выберите отдел"
-          >
-            <option value=1>One</option>
-            <option value=2>Two</option>
-            <option value=3>Three</option>
-          </select>
-          <div class="mb-3">
-            <label for="modalInputSurename" class="form-label">Фамилия</label>
-            <input
-              type="text"
-              formControlName="surname"
-              class="form-control"
-              id="modalInputSurename"
-              aria-describedby="modalHelp"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="modalInputName" class="form-label">Имя</label>
-            <input
-              type="text"
-              formControlName="firstname"
-              class="form-control"
-              id="modalInputName"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="modalInputPatronymic" class="form-label"
-              >Отчество</label
-            >
-            <input
-              type="text"
-              formControlName="patronymic"
-              class="form-control"
-              id="modalInputPatronymic"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="modalInputDateOfBirth" class="form-label"
-              >Дата рождения</label
-            >
-            <input
-              type="date"
-              formControlName="dateOfBirth"
-              class="form-control"
-              id="modalInputDateOfBirth"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="modalInputDateOfEmployment" class="form-label"
-              >Дата устройства на работу</label
-            >
-            <input
-              type="date"
-              formControlName="dateOfEmployment"
-              class="form-control"
-              id="modalInputDateOfEmployment"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="modalInputWage" class="form-label"
-              >Заработная плата</label
-            >
-            <input
-              type="number"
-              formControlName="wage"
-              class="form-control"
-              id="modalInputWage"
-            />
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Закрыть
-        </button>
-        <button type="button" (click)="saveEmployee()" class="btn btn-primary" data-bs-dismiss="modal">
-          Сохранить
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
+<app-employee-modal-update [employee]="selectedEmployee"></app-employee-modal-update>
+<app-employee-modal-create></app-employee-modal-create>

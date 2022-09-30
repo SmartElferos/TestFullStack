@@ -4,7 +4,7 @@ export interface Employee {
   surname : string;
   name : string;
   patronymic : string;
-  dateOfBirth : Date;
-  dateOfEmployment : Date;
+  dateOfBirth?: Date;
+  dateOfEmployment?: Date;
   wage : number;
 }

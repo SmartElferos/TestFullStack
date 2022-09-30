@@ -1,0 +1,114 @@
+<!-- Modal Create-->
+<div
+  class="modal fade"
+  id="updateModal"
+  tabindex="-1"
+  aria-labelledby="createModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="createModalLabel">Обновить данные сотрудника</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="employeeFormUpdate" (ngSubmit)="updateEmployee()">
+          <label for="modalInputDivision" class="form-label">Отдел</label>
+          <select
+            class="form-select"
+            formControlName="divisionId"
+            aria-label="Выберите отдел"
+            [(ngModel)]="employee.divisionId"
+          >
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+          <div class="mb-3">
+            <label for="modalInputSurename" class="form-label">Фамилия</label>
+            <input
+              type="text"
+              formControlName="surname"
+              class="form-control"
+              id="modalInputSurename"
+              aria-describedby="modalHelp"
+              [(ngModel)]="employee.surname"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="modalInputName" class="form-label">Имя</label>
+            <input
+              type="text"
+              formControlName="firstname"
+              class="form-control"
+              id="modalInputName"
+              [(ngModel)]="employee.name"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="modalInputPatronymic" class="form-label"
+              >Отчество</label
+            >
+            <input
+              type="text"
+              formControlName="patronymic"
+              class="form-control"
+              id="modalInputPatronymic"
+              [(ngModel)]="employee.patronymic"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="modalInputDateOfBirth" class="form-label"
+              >Дата рождения</label
+            >
+            <input
+              type="date"
+              formControlName="dateOfBirth"
+              class="form-control"
+              id="modalInputDateOfBirth"
+              [(ngModel)]="employee.dateOfBirth"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="modalInputDateOfEmployment" class="form-label"
+              >Дата устройства на работу</label
+            >
+            <input
+              type="date"
+              formControlName="dateOfEmployment"
+              class="form-control"
+              id="modalInputDateOfEmployment"
+              [(ngModel)]="employee.dateOfEmployment"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="modalInputWage" class="form-label"
+              >Заработная плата</label
+            >
+            <input
+              type="number"
+              formControlName="wage"
+              class="form-control"
+              id="modalInputWage"
+              [(ngModel)]="employee.wage"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Закрыть
+        </button>
+        <button type="button" (click)="updateEmployee()" class="btn btn-primary" data-bs-dismiss="modal">
+          Сохранить
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
