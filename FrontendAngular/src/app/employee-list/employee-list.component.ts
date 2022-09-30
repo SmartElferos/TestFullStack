@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Employee } from '../models/employee.model';
 import { ApiService } from '../services/api.service';
 
@@ -14,16 +14,16 @@ export class EmployeeListComponent implements OnInit {
 
   editEmployee !: Employee;
 
-  employeeForm = new FormGroup({
-    divisionId: new FormControl(0, Validators.required),
-    surname: new FormControl('', Validators.required),
-    firstname: new FormControl('', Validators.required),
-    patronymic: new FormControl('', Validators.required),
-    dateOfBirth: new FormControl(''),
-    dateOfEmployment: new FormControl(''),
-    wage: new FormControl(0)
+  employeeForm = new UntypedFormGroup({
+    divisionId: new UntypedFormControl(0, Validators.required),
+    surname: new UntypedFormControl('', Validators.required),
+    firstname: new UntypedFormControl('', Validators.required),
+    patronymic: new UntypedFormControl('', Validators.required),
+    dateOfBirth: new UntypedFormControl(''),
+    dateOfEmployment: new UntypedFormControl(''),
+    wage: new UntypedFormControl(0)
   })
-  constructor(private formbuilder : FormBuilder, private api : ApiService) { }
+  constructor(private formbuilder : UntypedFormBuilder, private api : ApiService) { }
 
   ngOnInit(): void {
     this.getAllEmployees()
