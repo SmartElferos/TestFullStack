@@ -1,4 +1,3 @@
-import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Employee } from '../models/employee.model';
@@ -24,9 +23,7 @@ export class EmployeeListComponent implements OnInit {
     dateOfEmployment: new UntypedFormControl(''),
     wage: new UntypedFormControl(0)
   })
-  constructor(private formbuilder : UntypedFormBuilder,
-              private api : ApiService,
-              private datePipe: DatePipe) { }
+  constructor(private formbuilder : UntypedFormBuilder, private api : ApiService) { }
 
   ngOnInit(): void {
     this.getAllEmployees()
@@ -64,7 +61,7 @@ export class EmployeeListComponent implements OnInit {
       this.api.addEmployee(editEmployee)
       .subscribe(response=> {
         this.employees.push(response);
-        //alert("Успешно сохранено")
+        alert("Успешно сохранено: " + response)
       })
     }
   }
@@ -77,8 +74,8 @@ export class EmployeeListComponent implements OnInit {
         surname: this.editEmployee.surname,
         firstname: this.editEmployee.name,
         patronymic: this.editEmployee.patronymic,
-        dateOfBirth: this.datePipe.transform(this.editEmployee.dateOfBirth,"yyyy-MM-dd"),
-        dateOfEmployment: this.datePipe.transform(this.editEmployee.dateOfEmployment,"yyyy-MM-dd"),
+        dateOfBirth: this.editEmployee.dateOfBirth,
+        dateOfEmployment: this.editEmployee.dateOfEmployment,
         wage: this.editEmployee.wage
       })
     })
@@ -87,7 +84,7 @@ export class EmployeeListComponent implements OnInit {
   deleteEmployee(employee: Employee) {
     this.api.deleteEmployee(employee.id).subscribe(response=> {
       this.employees = this.employees.filter(e => e !== employee)
-      // alert("Успешно удалено")
+      alert("Успешно удалено: " + response)
     })
   }
 }
