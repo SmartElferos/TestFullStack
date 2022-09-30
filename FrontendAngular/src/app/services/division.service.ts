@@ -5,14 +5,14 @@ import { Division } from '../models/division.model';
 @Injectable({
   providedIn: 'root'
 })
-export class DivisionsService {
+export class DivisionService {
 
   getDivision(id: number): string {
     // const division: string = DIVISIONS.find(element => element.id = id);
     return DIVISIONS.filter(x => x.id == id)[0].name;
   }
 
-  getAllDivisions(id: number): Division[] {
+  getAllDivisions(): Division[] {
     // const division: string = DIVISIONS.find(element => element.id = id);
     return DIVISIONS;
   }

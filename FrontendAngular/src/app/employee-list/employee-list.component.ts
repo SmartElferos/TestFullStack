@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../models/employee.model';
 import { ApiService } from '../services/api.service';
-import { DivisionsService } from '../services/divisions.service';
-import { EmployeeService } from '../services/employees.service';
+import { DivisionService } from '../services/division.service';
+import { EmployeeService } from '../services/employee.service';
 
 @Component({
   selector: 'app-employee-list',
@@ -22,7 +22,7 @@ export class EmployeeListComponent implements OnInit {
 
   constructor(private api : ApiService,
               public employeeService: EmployeeService,
-              public divisionService: DivisionsService) { }
+              public divisionService: DivisionService) { }
 
   ngOnInit(): void {
     this.getAllEmployees()

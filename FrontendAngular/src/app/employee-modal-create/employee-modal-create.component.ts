@@ -3,7 +3,8 @@ import { DatePipe } from '@angular/common';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
 import { Employee } from '../models/employee.model';
-import { EmployeeService } from '../services/employees.service';
+import { EmployeeService } from '../services/employee.service';
+import { DivisionService } from '../services/division.service';
 
 @Component({
   selector: 'app-employee-modal-create',
@@ -35,7 +36,8 @@ export class EmployeeModalCreateComponent implements OnInit {
 
   constructor(private api : ApiService,
               private datePipe: DatePipe,
-              private employeeService: EmployeeService) { }
+              private employeeService: EmployeeService,
+              public divisionService: DivisionService) { }
 
   ngOnInit(): void {
   }

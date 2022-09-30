@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Employee } from '../models/employee.model';
 import { ApiService } from '../services/api.service';
+import { DivisionService } from '../services/division.service';
 
 
 @Component({
@@ -32,26 +33,11 @@ export class EmployeeModalUpdateComponent implements OnInit {
   })
 
   constructor(private api : ApiService,
-              private datePipe: DatePipe) { }
+              private datePipe: DatePipe,
+              public divisionService: DivisionService ) { }
 
   ngOnInit(): void {
   }
-
-  // loadEmployee(id: any){
-  //   this.api.getEmployeeById(id).subscribe(response=> {
-  //     this.editEmployee = response;
-  //     this.employeeFormUpdate.setValue({
-  //       id: this.editEmployee.id,
-  //       divisionId: this.editEmployee.divisionId,
-  //       surname: this.editEmployee.surname,
-  //       firstname: this.editEmployee.name,
-  //       patronymic: this.editEmployee.patronymic,
-  //       dateOfBirth: this.datePipe.transform(this.editEmployee.dateOfBirth,"yyyy-MM-dd"),
-  //       dateOfEmployment: this.datePipe.transform(this.editEmployee.dateOfEmployment,"yyyy-MM-dd"),
-  //       wage: this.editEmployee.wage
-  //     })
-  //   })
-  // }
 
   updateEmployee(){
     console.log(this.employeeFormUpdate);

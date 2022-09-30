@@ -25,9 +25,12 @@
             formControlName="divisionId"
             aria-label="Выберите отдел"
           >
-            <option value=1>One</option>
-            <option value=2>Two</option>
-            <option value=3>Three</option>
+            <option
+              *ngFor="let divisionItem of divisionService.getAllDivisions()"
+              value={{divisionItem.id}}
+            >
+            {{divisionItem.name}}
+            </option>
           </select>
           <div class="mb-3">
             <label for="modalInputSurename" class="form-label">Фамилия</label>
