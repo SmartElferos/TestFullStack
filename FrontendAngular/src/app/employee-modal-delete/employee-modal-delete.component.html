@@ -15,10 +15,11 @@
         <p>Данный сторудник будет безвозратно удален из базы данных</p>
         <form (ngSubmit)="deleteEmployee(employee)">
           <div class="mb-3">
-            <label class="form-label">Отдел</label>
+            <!-- <label class="form-label">Отдел</label> -->
             <p>{{ divisionService.getDivision(employee.divisionId) }}</p>
+            <p>{{ employee.surname }} {{ employee.name }} {{ employee.patronymic }}</p>
+            <p>{{ employee.dateOfBirth | date:'YYYY'}} года рождения</p>
           </div>
-          {{ divisionService.getDivision(employee.divisionId) }}
         </form>
       </div>
       <div class="modal-footer">
