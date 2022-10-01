@@ -13,6 +13,7 @@ import { DatePipe } from '@angular/common';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeeModalCreateComponent } from './employee-modal-create/employee-modal-create.component';
 import { EmployeeModalUpdateComponent } from './employee-modal-update/employee-modal-update.component';
+import { EmployeeModalDeleteComponent } from './employee-modal-delete/employee-modal-delete.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { EmployeeModalUpdateComponent } from './employee-modal-update/employee-m
     EmployeeComponent,
     EmployeeModalCreateComponent,
     EmployeeModalUpdateComponent,
+    EmployeeModalDeleteComponent,
   ],
   imports: [
     BrowserModule,

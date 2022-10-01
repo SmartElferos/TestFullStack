@@ -18,12 +18,12 @@ export class ApiService {
     return this.http.get<Employee[]>(this.baseApiUrl + '/api/employee');
   }
 
-  getEmployeeById(id: any): Observable<Employee>{
+  getEmployeeById(id: number): Observable<Employee>{
     // console.log(this.baseApiUrl + '/api/employee/'+id);
     return this.http.get<Employee>(this.baseApiUrl + '/api/employee/'+id);
   }
 
-  deleteEmployee(id: any): Observable<Employee>{
+  deleteEmployee(id: number): Observable<Employee>{
     // console.log(this.baseApiUrl + '/api/employee/'+id);
     return this.http.delete<Employee>(this.baseApiUrl + '/api/employee/'+id);
   }
@@ -36,7 +36,7 @@ export class ApiService {
     return this.http.put<Employee>(this.baseApiUrl + '/api/employee/'+id, addEmployeeRequest);
   }
 
-  getDivisionById(id: any): Observable<Employee>{
+  getDivisionById(id: number): Observable<Employee>{
     return this.http.get<Employee>(this.baseApiUrl + '/api/employee/'+id);
   }
 

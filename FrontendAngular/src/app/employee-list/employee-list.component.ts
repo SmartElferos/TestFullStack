@@ -44,11 +44,4 @@ export class EmployeeListComponent implements OnInit {
   selectEmployee(employee: Employee){
     this.selectedEmployee = employee;
   }
-
-  deleteEmployee(employee: Employee) {
-    this.api.deleteEmployee(employee.id).subscribe(response=> {
-      this.employeeService.employees = this.employeeService.employees.filter(e => e !== employee)
-      // alert("Успешно удалено")
-    })
-  }
 }

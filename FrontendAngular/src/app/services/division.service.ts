@@ -9,6 +9,9 @@ export class DivisionService {
 
   getDivision(id: number): string {
     // const division: string = DIVISIONS.find(element => element.id = id);
+    if (id <= 0 ) {
+      return "";
+    }
     return DIVISIONS.filter(x => x.id == id)[0].name;
   }
 

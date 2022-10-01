@@ -15,6 +15,10 @@ export class EmployeeService {
     this.employees.push(employee);
   }
 
+  delete(employee: Employee){
+    this.employees = this.employees.filter(e => e !== employee)
+  }
+
   clear() {
     this.employees = [];
   }

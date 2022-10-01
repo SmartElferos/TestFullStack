@@ -37,7 +37,15 @@
           >
             Редактировать
           </button>
-          <button class="btn btn-danger p-1" (click)="deleteEmployee(employeeItem)">Удалить</button>
+          <button
+            type="button"
+            class="btn btn-danger p-1"
+            data-bs-toggle="modal"
+            data-bs-target="#deleteModal"
+            (click)="selectEmployee(employeeItem)"
+          >
+            Удалить
+          </button>
         </td>
       </tr>
     </tbody>
@@ -46,3 +54,4 @@
 </div>
 <app-employee-modal-update [employee]="selectedEmployee"></app-employee-modal-update>
 <app-employee-modal-create></app-employee-modal-create>
+<app-employee-modal-delete [employee]="selectedEmployee"></app-employee-modal-delete>

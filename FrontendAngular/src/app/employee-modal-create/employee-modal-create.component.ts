@@ -29,9 +29,9 @@ export class EmployeeModalCreateComponent implements OnInit {
     surname: new UntypedFormControl('', Validators.required),
     firstname: new UntypedFormControl('', Validators.required),
     patronymic: new UntypedFormControl('', Validators.required),
-    dateOfBirth: new UntypedFormControl(''),
-    dateOfEmployment: new UntypedFormControl(''),
-    wage: new UntypedFormControl(0)
+    dateOfBirth: new UntypedFormControl('', Validators.required),
+    dateOfEmployment: new UntypedFormControl('', Validators.required),
+    wage: new UntypedFormControl(0, Validators.required)
   })
 
   constructor(private api : ApiService,
@@ -66,7 +66,7 @@ export class EmployeeModalCreateComponent implements OnInit {
         },
         error: (response) => {
           console.log(response);
-          alert("Успешно сохранено");
+          alert("Ошибка при создании нового сотрудника");
         }
       });
       this.employeeFormCreate.reset();
