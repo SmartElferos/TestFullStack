@@ -1,5 +1,5 @@
 <div class="container my-5">
-  <table class="table mt-3" *ngIf="employeeService.isEmpty()">
+  <table class="table mt-3" *ngIf="employeeService.isEmployeeEmpty()">
     <thead>
       <tr>
         <th scope="col">Отдел</th>
@@ -9,9 +9,71 @@
         <th scope="col">Заработная плата</th>
         <th scope="col"></th>
       </tr>
+      <tr>
+        <th scope="col">
+          <select
+            class="form-select"
+            aria-label="Выберите отдел"
+            [(ngModel)]="filterTextByDivision"
+          >
+            <option selected value="">
+              Выберите отдел
+            </option>
+            <option
+              *ngFor="let divisionItem of divisionService.getAllDivisions()"
+              value={{divisionItem.id}}
+            >
+            {{divisionItem.name}}
+            </option>
+          </select>
+        </th>
+        <th scope="col">
+          <input
+            type="text"
+            class="form-control mt-1 mb-1"
+            placeholder="Поиск по Ф.И.О."
+            [(ngModel)]="filterTextByFIO"
+          />
+        </th>
+        <th scope="col">
+          <input
+            type="date"
+            class="form-control mt-1 mb-1"
+            [(ngModel)]="filterTextByDateOfBirth"
+          />
+        </th>
+        <th scope="col">
+          <input
+            type="date"
+            class="form-control mt-1 mb-1"
+            [(ngModel)]="filterTextByDateOfEmployment"
+          />
+        </th>
+        <th scope="col">
+          <input
+            type="number"
+            class="form-control mt-1 mb-1"
+            [(ngModel)]="filterTextByWage"
+          />
+        </th>
+        <th scope="col">
+          <button
+            type="button"
+            class="btn btn-secondary p-1 mb-2"
+            (click)="resetFilter()"
+          >
+            Сбросить все фильтры
+          </button>
+        </th>
+      </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let employeeItem of employeeService.getEmployees()">
+      <tr *ngFor="let employeeItem of employeeService.getEmployees() |
+            filterDivision: filterTextByDivision |
+            filterFIO: filterTextByFIO |
+            filterDateOfBirth: filterTextByDateOfBirth |
+            filterDateOfEmployment: filterTextByDateOfEmployment |
+            filterWage: filterTextByWage">
         <td>{{ divisionService.getDivision(employeeItem.divisionId) }}</td>
         <td>
           {{ employeeItem.surname }} {{ employeeItem.name }} {{ employeeItem.patronymic }}
@@ -50,7 +112,7 @@
       </tr>
     </tbody>
   </table>
-  <p *ngIf="!employeeService.isEmpty()">Записей сотрудников не найдено</p>
+  <p *ngIf="!employeeService.isEmployeeEmpty()">Записей сотрудников не найдено</p>
 </div>
 <app-employee-modal-update [employee]="selectedEmployee"></app-employee-modal-update>
 <app-employee-modal-create></app-employee-modal-create>

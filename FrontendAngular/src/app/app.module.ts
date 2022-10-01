@@ -14,6 +14,11 @@ import { EmployeeComponent } from './employee/employee.component';
 import { EmployeeModalCreateComponent } from './employee-modal-create/employee-modal-create.component';
 import { EmployeeModalUpdateComponent } from './employee-modal-update/employee-modal-update.component';
 import { EmployeeModalDeleteComponent } from './employee-modal-delete/employee-modal-delete.component';
+import { FilterDateOfBirthPipe } from './pipes/filter-dateofbirth.pipe';
+import { FilterDateOfEmploymentPipe } from './pipes/filter-dateofemployment.pipe';
+import { FilterWagePipe } from './pipes/filter-wage.pipe';
+import { FilterDivisionPipe } from './pipes/filter-division.pipe';
+import { FilterFIOPipe } from './pipes/filter-fio.pipe';
 
 @NgModule({
   declarations: [
@@ -25,6 +30,11 @@ import { EmployeeModalDeleteComponent } from './employee-modal-delete/employee-m
     EmployeeModalCreateComponent,
     EmployeeModalUpdateComponent,
     EmployeeModalDeleteComponent,
+    FilterDivisionPipe,
+    FilterDateOfBirthPipe,
+    FilterDateOfEmploymentPipe,
+    FilterWagePipe,
+    FilterFIOPipe
   ],
   imports: [
     BrowserModule,

@@ -31,7 +31,6 @@ export class EmployeeModalDeleteComponent implements OnInit {
     this.api.deleteEmployee(employee.id)
     .subscribe({
       next: (employee) => {
-        console.log(employee);
         this.employeeService.delete(this.employee);
       },
       error: (response) => {
@@ -41,7 +40,6 @@ export class EmployeeModalDeleteComponent implements OnInit {
   }
 
   deleteEmployeeTest(employee: Employee) {
-        console.log(employee);
         this.employeeService.delete(employee);
   }
 }

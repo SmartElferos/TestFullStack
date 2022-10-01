@@ -20,6 +20,12 @@ export class EmployeeListComponent implements OnInit {
     wage: 0
   };
 
+  filterTextByDivision : string = '';
+  filterTextByFIO : string = '';
+  filterTextByDateOfBirth : string = '';
+  filterTextByDateOfEmployment : string = '';
+  filterTextByWage : string = '';
+
   constructor(private api : ApiService,
               public employeeService: EmployeeService,
               public divisionService: DivisionService) { }
@@ -33,7 +39,6 @@ export class EmployeeListComponent implements OnInit {
     .subscribe({
       next: (employees) => {
         this.employeeService.employees = employees;
-        // console.log(employees);
       },
       error: (response) => {
         console.log(response);
@@ -43,5 +48,13 @@ export class EmployeeListComponent implements OnInit {
 
   selectEmployee(employee: Employee){
     this.selectedEmployee = employee;
+  }
+
+  resetFilter() {
+    this.filterTextByDivision = '';
+    this.filterTextByFIO = '';
+    this.filterTextByDateOfBirth = '';
+    this.filterTextByDateOfEmployment = '';
+    this.filterTextByWage = '';
   }
 }

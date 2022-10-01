@@ -6,6 +6,7 @@ import { Employee } from '../models/employee.model';
 })
 export class EmployeeService {
   employees: Employee[] = [];
+  filteredEmployees: Employee[] = [];
 
   getEmployees(){
     return this.employees;
@@ -23,7 +24,7 @@ export class EmployeeService {
     this.employees = [];
   }
 
-  isEmpty(){
+  isEmployeeEmpty(){
     if (this.employees.length > 0) {
       return true;
     }

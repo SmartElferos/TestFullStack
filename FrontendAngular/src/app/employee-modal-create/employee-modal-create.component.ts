@@ -43,10 +43,7 @@ export class EmployeeModalCreateComponent implements OnInit {
   }
 
   createEmployee(){
-    console.log(this.employeeFormCreate);
     if(this.employeeFormCreate.valid) {
-      // this.employees.push(this.employeeFormCreate.getRawValue());
-      // console.log(this.employeeFormCreate);
       this.editEmployee = {
           id: 0,
           divisionId: parseInt(this.employeeFormCreate.controls['divisionId'].value),
@@ -61,7 +58,6 @@ export class EmployeeModalCreateComponent implements OnInit {
       this.api.addEmployee(this.editEmployee)
       .subscribe({
         next: (employee) => {
-          console.log(employee);
           this.employeeService.add(employee);
         },
         error: (response) => {

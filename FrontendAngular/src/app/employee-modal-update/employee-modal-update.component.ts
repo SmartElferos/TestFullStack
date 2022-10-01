@@ -42,8 +42,6 @@ export class EmployeeModalUpdateComponent implements OnInit {
   updateEmployee(){
     console.log(this.employeeFormUpdate);
     if(this.employeeFormUpdate.valid) {
-      // this.employees.push(this.employeeFormUpdate.getRawValue());
-      // console.log(this.employeeFormUpdate);
       let editEmployee : Employee = {
           id: this.employee.id,
           divisionId: this.employeeFormUpdate.controls['divisionId'].value,
@@ -58,13 +56,10 @@ export class EmployeeModalUpdateComponent implements OnInit {
       this.api.updateEmployee(editEmployee, this.employee.id)
       .subscribe({
         next: (employees) => {
-          console.log(employees);
         },
         error: (response) => {
           console.log(response);
         }
-        // this.employee.push(response);
-        //alert("Успешно сохранено")
       })
     }
   }
