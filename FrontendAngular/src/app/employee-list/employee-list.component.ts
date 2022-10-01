@@ -11,6 +11,8 @@ import { EmployeeService } from '../services/employee.service';
 })
 export class EmployeeListComponent implements OnInit {
 
+  sortingOrder: boolean = true;
+
   selectedEmployee: Employee = {
     id: 0,
     divisionId: 0,
@@ -56,5 +58,31 @@ export class EmployeeListComponent implements OnInit {
     this.filterTextByDateOfBirth = '';
     this.filterTextByDateOfEmployment = '';
     this.filterTextByWage = '';
+  }
+
+  sortData() {
+    if (this.sortingOrder) {
+      this.employeeService.employees = this.employeeService.getEmployees().sort((a,b) => a.id - b.id);
+    } else {
+      this.employeeService.employees = this.employeeService.getEmployees().sort((a,b) => b.id - a.id);
+    }
+    this.sortingOrder = !this.sortingOrder;
+  }
+
+  sortName(property) {
+    this.sortingOrder = !this.sortingOrder;
+
+    let direction = this.sortingOrder ? 1: -1;
+
+    this.employeeService.employees.sort(function(a,b) {
+      if (a[property] < b[property]) {
+        return -1 * direction;
+      } else if (a[property] > b[property]) {
+        return 1 * direction;
+      }
+      else {
+        return 0;
+      }
+    })
   }
 }

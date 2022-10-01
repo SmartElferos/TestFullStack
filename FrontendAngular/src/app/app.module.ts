@@ -42,7 +42,7 @@ import { FilterFIOPipe } from './pipes/filter-fio.pipe';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     DatePipe

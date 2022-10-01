@@ -1,18 +1,43 @@
 <div class="container my-5">
-  <table class="table mt-3" *ngIf="employeeService.isEmployeeEmpty()">
-    <thead>
+  <table class="table table-striped mt-3" *ngIf="employeeService.isEmployeeEmpty()">
+    <thead class="table-light">
       <tr>
-        <th scope="col">Отдел</th>
-        <th scope="col">Ф.И.О.</th>
-        <th scope="col">Дата рождения</th>
-        <th scope="col">Дата устройства на работу</th>
-        <th scope="col">Заработная плата</th>
-        <th scope="col"></th>
+        <th scope="col" class="text-center align-top">
+          <button type="button" class="btn btn-light" (click)="sortName('id')">
+            <strong>Отдел&nbsp;</strong>
+            <i class="fa-solid fa-arrows-up-down"></i>
+          </button>
+        </th>
+        <th scope="col" class="text-center align-top">
+          <button type="button" class="btn btn-light" (click)="sortName('surname')">
+            <strong>Ф.И.О.&nbsp;</strong>
+            <i class="fa-solid fa-arrows-up-down"></i>
+          </button>
+        </th>
+        <th scope="col" class="text-center align-top">
+          <button type="button" class="btn btn-light" (click)="sortName('dateOfBirth')">
+            <strong>Дата Рождения&nbsp;</strong>
+            <i class="fa-solid fa-arrows-up-down"></i>
+          </button>
+        </th>
+        <th scope="col" class="text-center align-top">
+          <button type="button" class="btn btn-light" (click)="sortName('dateOfEmployment')">
+            <strong>Дата устройства на работу&nbsp;</strong>
+            <i class="fa-solid fa-arrows-up-down"></i>
+          </button>
+        </th>
+        <th scope="col" class="text-center align-top">
+          <button type="button" class="btn btn-light" (click)="sortName('wage')">
+            <strong>Заработная плата&nbsp;</strong>
+            <i class="fa-solid fa-arrows-up-down"></i>
+          </button>
+        </th>
+        <th scope="col" class="text-center align-top"></th>
       </tr>
       <tr>
         <th scope="col">
           <select
-            class="form-select"
+            class="form-select mb-1"
             aria-label="Выберите отдел"
             [(ngModel)]="filterTextByDivision"
           >
