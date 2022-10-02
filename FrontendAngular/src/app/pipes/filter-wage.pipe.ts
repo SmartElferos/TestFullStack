@@ -12,7 +12,7 @@ export class FilterWagePipe implements PipeTransform {
     } else {
       return employees.filter((employee) =>
       {
-        return employee.wage < Number(filterText);
+        return employee.wage <= Number(filterText);
       });
     }
   }

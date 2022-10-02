@@ -44,7 +44,7 @@ export class EmployeeModalUpdateComponent implements OnInit {
     if(this.employeeFormUpdate.valid) {
       let editEmployee : Employee = {
           id: this.employee.id,
-          divisionId: this.employeeFormUpdate.controls['divisionId'].value,
+          divisionId: Number(this.employeeFormUpdate.controls['divisionId'].value),
           surname: this.employeeFormUpdate.controls['surname'].value,
           name: this.employeeFormUpdate.controls['firstname'].value,
           patronymic: this.employeeFormUpdate.controls['patronymic'].value,
