@@ -10,6 +10,16 @@ namespace TestFullstack.Data
     {
         private readonly EmployeeDBContext _context;
 
+        public Division GetDivisionById(int id)
+        {
+            return _context.Divisions.FirstOrDefault(p => p.Id == id);
+        }
+
+        public IEnumerable<Division> GetAllDivisions()
+        {
+            return _context.Divisions.ToList();
+        }
+
         public SqlEmployeeRepo(EmployeeDBContext context)
         {
             _context = context;

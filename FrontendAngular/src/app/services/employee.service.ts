@@ -12,6 +12,10 @@ export class EmployeeService {
     return this.employees;
   }
 
+  loadEmployees(employees: Employee[]){
+    this.employees = employees;
+  }
+
   add(employee: Employee){
     this.employees.push(employee);
   }

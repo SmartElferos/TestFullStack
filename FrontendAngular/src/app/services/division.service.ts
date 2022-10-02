@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { DIVISIONS } from "../mocked/division.mocked";
 import { Division } from '../models/division.model';
 
 @Injectable({
@@ -7,17 +6,21 @@ import { Division } from '../models/division.model';
 })
 export class DivisionService {
 
+  divisions : Division[] = [];
+
+  loadDivisions(divisions: Division[]){
+    this.divisions = divisions;
+  }
+
   getDivision(id: number): string {
-    // const division: string = DIVISIONS.find(element => element.id = id);
     if (id <= 0 ) {
       return "";
     }
-    return DIVISIONS.filter(x => x.id == id)[0].name;
+    return this.divisions.filter(x => x.id == id)[0].name;
   }
 
   getAllDivisions(): Division[] {
-    // const division: string = DIVISIONS.find(element => element.id = id);
-    return DIVISIONS;
+    return this.divisions;
   }
   constructor() { }
 }

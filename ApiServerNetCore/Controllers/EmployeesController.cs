@@ -25,7 +25,6 @@ namespace TestFullstack.Controllers
             _mapper = mapper;
         }
 
-        //private readonly MockEmployeeRepo _repository = new MockEmployeeRepo();
         //Get api/employee
         [HttpGet]
         public ActionResult <EmployeeReadDto> GetAllEmployees()
@@ -34,6 +33,7 @@ namespace TestFullstack.Controllers
 
             return Ok(_mapper.Map<IEnumerable<EmployeeReadDto>>(employeeItems));
         }
+
 
         //Get api/employee/{id}
         [HttpGet("{id}", Name = "GetEmployeeById")]

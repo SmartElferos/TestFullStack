@@ -15,5 +15,8 @@ namespace TestFullstack.Data
         void CreateEmployee(Employee employee);
         void UpdateEmployee(Employee employee);
         void DeleteEmployee(Employee employee);
+
+        IEnumerable<Division> GetAllDivisions();
+        Division GetDivisionById(int id);
     }
 }

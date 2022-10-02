@@ -33,14 +33,27 @@ export class EmployeeListComponent implements OnInit {
               public divisionService: DivisionService) { }
 
   ngOnInit(): void {
-    this.getAllEmployees()
+    this.getAllDivisions();
+    this.getAllEmployees();
+  }
+
+  getAllDivisions(){
+    this.api.getAllDivisions().
+    subscribe({
+      next: (divisions) => {
+        this.divisionService.loadDivisions(divisions);
+      },
+      error: (response) => {
+        console.log(response);
+      }
+    })
   }
 
   getAllEmployees(){
     this.api.getAllEmployees()
     .subscribe({
       next: (employees) => {
-        this.employeeService.employees = employees;
+        this.employeeService.loadEmployees(employees);
       },
       error: (response) => {
         console.log(response);

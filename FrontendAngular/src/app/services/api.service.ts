@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators'
 import { Observable, of } from 'rxjs'
 import { Employee } from '../models/employee.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
+import { Division } from '../models/division.model';
 
 @Injectable({
   providedIn: 'root'
@@ -36,8 +36,11 @@ export class ApiService {
     return this.http.put<Employee>(this.baseApiUrl + '/api/employee/'+id, addEmployeeRequest);
   }
 
-  getDivisionById(id: number): Observable<Employee>{
-    return this.http.get<Employee>(this.baseApiUrl + '/api/employee/'+id);
+  getAllDivisions(): Observable<Division[]> {
+    return this.http.get<Division[]>(this.baseApiUrl + '/api/division');
   }
 
+  getDivisionById(id: number): Observable<Division>{
+    return this.http.get<Division>(this.baseApiUrl + '/api/employee/'+id);
+  }
 }

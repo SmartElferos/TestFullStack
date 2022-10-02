@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TestFullstack.Data;
+using TestFullstack.Dtos;
 using TestFullstack.Models;
 
 namespace TestFullstack.Controllers
@@ -13,28 +15,31 @@ namespace TestFullstack.Controllers
     [ApiController]
     public class DivisionsController : ControllerBase
     {
-        private readonly IDivisionRepo _repository;
-        public DivisionsController(IDivisionRepo repository)
+        private readonly IEmployeeRepo _repository;
+        private readonly IMapper _mapper;
+
+        public DivisionsController(IEmployeeRepo repository, IMapper mapper)
         {
             _repository = repository;
-        }
-        //private readonly MockDivisionRepo _repository = new MockDivisionRepo();
-        //Get api/Division
-        [HttpGet]
-        public ActionResult<IEnumerable<Division>> GetAllDivisions()
-        {
-            var DivisionItems = _repository.GetDivisions();
-
-            return Ok(DivisionItems);
+            _mapper = mapper;
         }
 
         //Get api/Division/{id}
         [HttpGet("{id}")]
         public ActionResult<Division> GetDivisionById(int id)
         {
-            var DivisionItem = _repository.GetDivisionById(id);
+            var divisionItem = _repository.GetDivisionById(id);
 
-            return Ok(DivisionItem);
+            return Ok(divisionItem);
+        }
+        
+        //Get api/division
+        [HttpGet]
+        public ActionResult<DivisionReadDto> GetAllDivisions()
+        {
+            var divisionItems = _repository.GetAllDivisions();
+
+            return Ok(_mapper.Map<IEnumerable<DivisionReadDto>>(divisionItems));
         }
     }
 }

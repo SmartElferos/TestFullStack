@@ -27,6 +27,25 @@ namespace TestFullstack.Data
                 return employee;
         }
 
+        public Division GetDivisionById(int id)
+        {
+            return new Division { Id = 0, Name = "Отдел 1"};
+        }
+
+        public IEnumerable<Division> GetAllDivisions()
+        {
+                var employee = new List<Division>
+                {
+                    new Division { Id = 0, Name = "Отдел 1"},
+                    new Division { Id = 1, Name = "Отдел 2"},
+                    new Division { Id = 2, Name = "Отдел 3"},
+                    new Division { Id = 3, Name = "Отдел 4"},
+                    new Division { Id = 4, Name = "Отдел 5"},
+                };
+
+                return employee;
+        }
+
         public bool SaveChanges()
         {
             throw new NotImplementedException();

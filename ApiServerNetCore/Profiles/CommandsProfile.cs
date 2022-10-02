@@ -16,6 +16,7 @@ namespace TestFullstack.Profiles
             CreateMap<Employee, EmployeeReadDto>();
             CreateMap<EmployeeCreateDto, Employee>();
             CreateMap<EmployeeUpdateDto, Employee>();
+            CreateMap<Division, DivisionReadDto>();
         }
     }
 }

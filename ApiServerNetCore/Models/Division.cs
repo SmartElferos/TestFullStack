@@ -14,7 +14,7 @@ namespace TestFullstack.Models
         [Required]
         [MaxLength(250)]
         public string Name { get; set; }
-        [Required]
-        public List<Employee> Employees { get; set; }
+        //[Required]
+        //public List<Division> Divisions { get; set; }
     }
 }
