@@ -8,6 +8,17 @@ export class EmployeeService {
   employees: Employee[] = [];
   filteredEmployees: Employee[] = [];
 
+  refreshDateOfBirth(employee: Employee){
+    console.log('!!!!');
+    const found = this.employees.find(e => e.id = employee.id);
+    if(found){
+      const index = this.employees.indexOf(found);
+      if (index !== -1) {
+        this.employees[index].dateOfBirth = employee.dateOfBirth ;
+      }
+    }
+  }
+
   getEmployees(){
     return this.employees;
   }

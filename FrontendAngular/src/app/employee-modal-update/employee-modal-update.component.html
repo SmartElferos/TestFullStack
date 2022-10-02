@@ -71,11 +71,14 @@
               >Дата рождения</label
             >
             <input
-              type="date"
+              type="text"
               formControlName="dateOfBirth"
-              class="form-control"
+              class="form-control masked"
               id="modalInputDateOfBirth"
-              [(ngModel)]="employee.dateOfBirth"
+              placeholder="дд.мм.гггг"
+              pattern="\d{1,2}.\d{1,2}.\d{4}"
+              data-valid-example="01.01.2022"
+              [ngModel]="employee.dateOfBirth | date:'dd.MM.yyyy'"
             />
           </div>
           <div class="mb-3">
@@ -83,11 +86,14 @@
               >Дата устройства на работу</label
             >
             <input
-              type="date"
+              type="text"
               formControlName="dateOfEmployment"
-              class="form-control"
+              class="form-control masked"
               id="modalInputDateOfEmployment"
-              [(ngModel)]="employee.dateOfEmployment"
+              placeholder="дд.мм.гггг"
+              pattern="\d{1,2}.\d{1,2}.\d{4}"
+              data-valid-example="01.01.2022"
+              [ngModel]="employee.dateOfEmployment | date:'dd.MM.yyyy'"
             />
           </div>
           <div class="mb-3">

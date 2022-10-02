@@ -62,6 +62,7 @@ export class EmployeeListComponent implements OnInit {
   }
 
   selectEmployee(employee: Employee){
+    console.log(employee);
     this.selectedEmployee = employee;
   }
 
@@ -71,15 +72,11 @@ export class EmployeeListComponent implements OnInit {
     this.filterTextByDateOfBirth = '';
     this.filterTextByDateOfEmployment = '';
     this.filterTextByWage = '';
+    this.sortById();
   }
 
-  sortData() {
-    if (this.sortingOrder) {
-      this.employeeService.employees = this.employeeService.getEmployees().sort((a,b) => a.id - b.id);
-    } else {
-      this.employeeService.employees = this.employeeService.getEmployees().sort((a,b) => b.id - a.id);
-    }
-    this.sortingOrder = !this.sortingOrder;
+  sortById() {
+    this.employeeService.employees = this.employeeService.getEmployees().sort((a,b) => a.id - b.id);
   }
 
   sortName(property) {
